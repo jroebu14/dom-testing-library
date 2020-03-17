@@ -7,7 +7,9 @@ function queryAllByAltText(
 ) {
   const matcher = exact ? matches : fuzzyMatches
   const matchNormalizer = makeNormalizer({collapseWhitespace, trim, normalizer})
-  return Array.from(container.querySelectorAll('img,input,area')).filter(node =>
+  return Array.from(
+    container.querySelectorAll('img,input,area,amp-img'),
+  ).filter(node =>
     matcher(node.getAttribute('alt'), node, alt, matchNormalizer),
   )
 }
